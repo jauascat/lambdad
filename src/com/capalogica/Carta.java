@@ -18,6 +18,18 @@ public class Carta {
 			
 			throw new ValorCartaInvalidoException(valor+" es un valor de carta invalido");
 	}
+	
+	@Override
+	public boolean equals(Object vector)
+	{
+		Carta comparado = (Carta) vector;
+		
+		if(this.getValor() == comparado.getValor())
+			return true;
+		
+		else	
+			return false;
+	}
 
 	public NombreCarta getNombre() {
 		return nombre;
