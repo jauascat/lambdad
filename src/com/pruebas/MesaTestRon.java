@@ -15,7 +15,6 @@ public class MesaTestRon {
 	public void probarInicioRon()
 	{
 		Mesa mesa = new MockMesaRon(4);
-		int capacidadJugadores = 4;
 		int cartasRepartidas = 7;
 		
 		ArrayList<Jugador> jugadoresActivos = mesa.getJugadores();

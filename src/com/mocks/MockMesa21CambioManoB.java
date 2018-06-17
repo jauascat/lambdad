@@ -43,16 +43,16 @@ public class MockMesa21CambioManoB extends Mesa {
 			
 		jugador = jugadores.get(contador++);
 		
+		jugador.recibirCarta(new Carta(NombreCarta.SIETE,  PaloCarta.GOTAS,     NombreCarta.getValor(NombreCarta.SIETE)));
 		jugador.recibirCarta(new Carta(NombreCarta.KA,    PaloCarta.ESCUDOS,   NombreCarta.getValor(NombreCarta.KA)));
 		jugador.recibirCarta(new Carta(NombreCarta.QUINA, PaloCarta.ESTRELLAS, NombreCarta.getValor(NombreCarta.QUINA)));
 		jugador.recibirCarta(new Carta(NombreCarta.SEIS,  PaloCarta.FLORES,    NombreCarta.getValor(NombreCarta.SEIS)));
-		jugador.recibirCarta(new Carta(NombreCarta.SIETE,  PaloCarta.GOTAS,     NombreCarta.getValor(NombreCarta.SIETE)));
 		
 		jugador = jugadores.get(contador++);
 		
+		jugador.recibirCarta(new Carta(NombreCarta.SEIS,  PaloCarta.FLORES,    NombreCarta.getValor(NombreCarta.SEIS)));
 		jugador.recibirCarta(new Carta(NombreCarta.KA,    PaloCarta.ESCUDOS,   NombreCarta.getValor(NombreCarta.KA)));
 		jugador.recibirCarta(new Carta(NombreCarta.AS, PaloCarta.ESTRELLAS, NombreCarta.getValor(NombreCarta.AS)));
-		jugador.recibirCarta(new Carta(NombreCarta.SEIS,  PaloCarta.FLORES,    NombreCarta.getValor(NombreCarta.SEIS)));
 		jugador.recibirCarta(new Carta(NombreCarta.SIETE,  PaloCarta.GOTAS,     NombreCarta.getValor(NombreCarta.SIETE)));
 		
 		jugador = jugadores.get(contador++);

@@ -45,7 +45,6 @@ public class Mesa {
 		int puntaje = 0;
 		ArrayList<Jugador> ganadores = new ArrayList<>();
 		
-		System.out.println("Cantidad Jugadores: "+jugadores.size());
 		for(Jugador jugador : jugadores)
 		{
 			puntaje = this.calcularPuntaje21(jugador);
@@ -59,13 +58,13 @@ public class Mesa {
 					ganadores.add(jugador);
 					mayorPuntaje = puntaje;
 				}
+				else
 				if(puntaje == mayorPuntaje)
 				{
 					ganadores.add(jugador);
 				}
 			}
 		}
-		System.out.println(mayorPuntaje);
 		return ganadores;
 	}
 	
@@ -73,109 +72,30 @@ public class Mesa {
 	public boolean verificarCambio(Jugador jugador)
 	{
 		ArrayList<Carta> mano = jugador.getMano();
-		ArrayList<Carta> clonMano = new ArrayList<>();
-		boolean validacion = false;
-		
-		//clona la mano porque el analisis destruye la muestra
-		for(Carta carta : mano)
+		boolean validacion = Manos.isMerecedorCambioMano21(mano);
+		if(validacion)
 		{
-			try {
-				clonMano.add(new Carta(carta.getNombreCarta(), carta.getPaloCarta(), carta.getValor()));
-				
-			} catch (ValorCartaInvalidoException e) {
-				
-				e.printStackTrace();
-			}
+			repartidor.darCambioMano21(mano);
 		}
-		
-		//sale si niquiera tiene 4 cartas
-		if(mano.size() != 4)
-			return false;
-		else
-		{
-			//recorre la (clon)mano del jugador
-			ListIterator<Carta> manoIterador = clonMano.listIterator();
-			while(manoIterador.hasNext()) {
-				
-				Carta carta = manoIterador.next();
-				repartidor.cortarSiTipoCartaEsTipo(manoIterador, carta, NombreCarta.QUINA);
-				repartidor.cortarSiTipoCartaEsTipo(manoIterador, carta, NombreCarta.JOTA);
-				repartidor.cortarSiTipoCartaEsTipo(manoIterador, carta, NombreCarta.KA);
-				repartidor.cortarSiTipoCartaEsTipo(manoIterador, carta, NombreCarta.TRES);
-			}
-			//si quedaron elementos entonces hay previous => las cartas no son correctas
-			if(manoIterador.hasPrevious())
-			{
-				Carta carta = manoIterador.previous();
-				return false;
-			}
-				
-			else {
-				//de otra manera es porque las 4 cartas, J,Q,K,3 eran las unicas en la mano
-				//=> las cartas son correctas => repartidor da mano de cambio
-				repartidor.darManoCambio(mano);
-				return true;
-			}
-		}
+		return validacion;
 	}
 	
 	public int calcularPuntaje21(Jugador jugador)
 	{
 		ArrayList<Carta> mano = jugador.getMano();
-		int puntaje = 0;
 		int tamannoExcepcion = 2;
-		int contador = 0;
-		Carta carta1;
-		Carta carta2;
+		
 		if(mano.size() == tamannoExcepcion)
 		{
-			carta1 = mano.get(contador++);
-			carta2 = mano.get(contador++);
+			if(Manos.is21yMedio(mano))	return 21;
+			else
 			
-			if(Cartas.isNombreIguala21yMedio(carta1))
-			{
-				if(Cartas.isNombreIguala10(carta1))
-				{
-					if(Cartas.isNombreIguala2(carta2))
-					{
-						return 21;
-					}
-					else
-					{
-						return contarPuntos21Ordinariamente(mano, puntaje);
-					}
-				}
-				else
-				{
-					if(Cartas.isNombreIguala10(carta2))
-					{
-						return 21;
-					}
-					else
-					{
-						return contarPuntos21Ordinariamente(mano, puntaje);
-					}
-				}
-			}
-			return contarPuntos21Ordinariamente(mano, puntaje);
+				return Manos.contarPuntos21Normal(mano);
 		}
 		else
-		{
-			return contarPuntos21Ordinariamente(mano, puntaje);
-		}
 		
+			return Manos.contarPuntos21Normal(mano);
 	}
-	
-	public int contarPuntos21Ordinariamente(ArrayList<Carta> mano, int puntaje)
-	{
-		System.out.println(mano.size());
-		for(Carta carta : mano)
-		{
-			puntaje += carta.getValor();
-		}
-		return puntaje;
-	}
-	
 	
 	public void empezarPartidaDeRon()
 	{
@@ -188,11 +108,11 @@ public class Mesa {
 		for(Jugador jugador : jugadores)
 		{
 			jugador.seDeshaceDeCarta();
-			tomarCartaDelDeck(jugador);
+			tomarCartaDelDeckRon(jugador);
 		}
 	}
 	
-	public void tomarCartaDelDeck(Jugador jugador)
+	public void tomarCartaDelDeckRon(Jugador jugador)
 	{
 		jugador.recibirCarta(deck.tomarCartaDelNaipe());
 	}
@@ -209,5 +129,4 @@ public class Mesa {
 	{
 		return deck;
 	}
-	
 }

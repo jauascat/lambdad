@@ -30,21 +30,13 @@ public class Repartidor {
 		Collections.shuffle(naipe.getCartas());
 	}
 	
-	public void darManoCambio(ArrayList<Carta> mano)
+	public void darCambioMano21(ArrayList<Carta> mano)
 	{
 		mano.clear();
 		mano.add(naipe.tomarCartaDelNaipe());
 		mano.add(naipe.tomarCartaDelNaipe());
 		mano.add(naipe.tomarCartaDelNaipe());
 		mano.add(naipe.tomarCartaDelNaipe());
-	}
-	
-	public void cortarSiTipoCartaEsTipo(ListIterator<Carta> iterador, Carta carta, NombreCarta tipo)
-	{
-		if(carta.getNombreCarta() == tipo)
-		{
-			iterador.remove();
-		}
 	}
 	
 	public void saltearCartas(ArrayList<Jugador> jugadores, int cantidadCartas)

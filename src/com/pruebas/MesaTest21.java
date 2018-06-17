@@ -17,8 +17,10 @@ import com.mocks.MockMesa21yMedioTodos;
 import com.mocks.MockMesa21CambioManoA;
 import com.mocks.MockMesa21CambioManoB;
 import com.mocks.MockMesa21Normal;
+import com.mocks.MockMesa21yMedioCasiTodos;
 import com.negocios.Carta;
 import com.negocios.Jugador;
+import com.negocios.Manos;
 import com.negocios.Mesa;
 import com.negocios.Repartidor;
 
@@ -126,13 +128,22 @@ public class MesaTest21 {
 	}
 	
 	@Test
-	public void probarGananTodos21yMedio()
+	public void probarGananLaMitad21yMedio()
 	{
 		Mesa mockMesa = new MockMesa21yMedioTodos();
 		ArrayList<Jugador> ganadores = mockMesa.verificarGanadores21();
-
-		System.out.println("Cantidad ganadores: "+ ganadores.size());
 		assertEquals(2, ganadores.size());
 	}
-
+	
+	@Test
+	public void probarCasiGananTodos21yMedioPeroNo()
+	{
+		Mesa mockMesa = new MockMesa21yMedioCasiTodos();
+		ArrayList<Jugador> jugadores = mockMesa.getJugadores();
+		
+		for(Jugador jugador : jugadores)
+		{
+			assertFalse(Manos.is21yMedio(jugador.getMano()));
+		}
+	}
 }

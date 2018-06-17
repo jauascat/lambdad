@@ -10,11 +10,11 @@ import com.negocios.Carta;
 import com.negocios.Jugador;
 import com.negocios.Mesa;
 
-public class MockMesa21yMedioTodos extends Mesa {
+public class MockMesa21yMedioCasiTodos extends Mesa {
 
 	int capacidadJugadores;
 	
-	public MockMesa21yMedioTodos(){
+	public MockMesa21yMedioCasiTodos(){
 		super();
 		this.capacidadJugadores = 4;
 		
@@ -36,22 +36,27 @@ public class MockMesa21yMedioTodos extends Mesa {
 			jugador = jugadores.get(contador++);
 				
 			jugador.recibirCarta(new Carta(NombreCarta.DIEZ,    PaloCarta.ESCUDOS,   NombreCarta.getValor(NombreCarta.DIEZ)));
-			jugador.recibirCarta(new Carta(NombreCarta.DOS, PaloCarta.ESTRELLAS, NombreCarta.getValor(NombreCarta.DOS)));
+			jugador.recibirCarta(new Carta(NombreCarta.DOS, PaloCarta.FLORES, NombreCarta.getValor(NombreCarta.DOS)));
+			jugador.recibirCarta(new Carta(NombreCarta.NUEVE, PaloCarta.ESTRELLAS, NombreCarta.getValor(NombreCarta.NUEVE)));
 				
 			jugador = jugadores.get(contador++);
 			
+			jugador.recibirCarta(new Carta(NombreCarta.JOTA,    PaloCarta.ESCUDOS,   NombreCarta.getValor(NombreCarta.JOTA)));
 			jugador.recibirCarta(new Carta(NombreCarta.DOS,    PaloCarta.ESCUDOS,   NombreCarta.getValor(NombreCarta.DOS)));
 			jugador.recibirCarta(new Carta(NombreCarta.DIEZ, PaloCarta.ESTRELLAS, NombreCarta.getValor(NombreCarta.DIEZ)));
 			
 			jugador = jugadores.get(contador++);
 			
-			jugador.recibirCarta(new Carta(NombreCarta.DOS,    PaloCarta.ESCUDOS,   NombreCarta.getValor(NombreCarta.DOS)));
+			jugador.recibirCarta(new Carta(NombreCarta.DOS,    PaloCarta.FLORES,   NombreCarta.getValor(NombreCarta.DOS)));
 			jugador.recibirCarta(new Carta(NombreCarta.DOS, PaloCarta.ESTRELLAS, NombreCarta.getValor(NombreCarta.DOS)));
+			jugador.recibirCarta(new Carta(NombreCarta.CUATRO, PaloCarta.FLORES, NombreCarta.getValor(NombreCarta.CUATRO)));
 				
 			jugador = jugadores.get(contador++);
 			
 			jugador.recibirCarta(new Carta(NombreCarta.CINCO,    PaloCarta.ESCUDOS,   NombreCarta.getValor(NombreCarta.CINCO)));
-			jugador.recibirCarta(new Carta(NombreCarta.DOS, PaloCarta.ESTRELLAS, NombreCarta.getValor(NombreCarta.DOS)));
+			jugador.recibirCarta(new Carta(NombreCarta.DIEZ, PaloCarta.GOTAS, NombreCarta.getValor(NombreCarta.DIEZ)));
+			jugador.recibirCarta(new Carta(NombreCarta.DIEZ, PaloCarta.ESTRELLAS, NombreCarta.getValor(NombreCarta.DIEZ)));
+
 				
 		} catch (ValorCartaInvalidoException e) {
 			e.printStackTrace();
