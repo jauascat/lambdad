@@ -7,6 +7,6 @@ public class ValorCartaInvalidoException extends Exception{
 	}
 	
 	public ValorCartaInvalidoException(String message) {
-		super(message);
+		super(message+" es un valor de carta invalido");
 	}
 }

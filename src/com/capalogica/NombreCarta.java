@@ -2,7 +2,6 @@ package com.capalogica;
 
 public enum NombreCarta {
 
-	UNO,
 	DOS,
 	TRES,
 	CUATRO,
@@ -21,7 +20,6 @@ public enum NombreCarta {
 	{
 		switch(vector)
 		{
-		case UNO: 		return 1;
 		case DOS: 		return 2;
 		case TRES: 		return 3;
 		case CUATRO: 	return 4;

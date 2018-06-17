@@ -10,13 +10,14 @@ public class Carta {
 				 PaloCarta ppalo,
 				 int pvalor)
 						 throws ValorCartaInvalidoException {
-		nombre = pnombre;
-		palo = ppalo;
-		valor = pvalor;
 		
 		if(pvalor < 1 || pvalor > 10) 
 			
-			throw new ValorCartaInvalidoException(valor+" es un valor de carta invalido");
+			throw new ValorCartaInvalidoException(String.valueOf(pvalor));
+		
+		nombre = pnombre;
+		palo = ppalo;
+		valor = pvalor;
 	}
 	
 	@Override
