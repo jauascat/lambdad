@@ -9,11 +9,11 @@ public class Carta {
 	public Carta(NombreCarta pnombre,
 				 PaloCarta ppalo,
 				 int pvalor)
-						 throws ValorCartaInvalidoException {
+						 throws ExceptionValorCartaInvalido {
 		
 		if(pvalor < 1 || pvalor > 10) 
 			
-			throw new ValorCartaInvalidoException(String.valueOf(pvalor));
+			throw new ExceptionValorCartaInvalido(String.valueOf(pvalor));
 		
 		nombre = pnombre;
 		palo = ppalo;

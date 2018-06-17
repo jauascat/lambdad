@@ -16,6 +16,16 @@ public class Jugador {
 	{
 		mano.add(cartaRecibida);
 	}
+	
+	public int verPuntaje21()
+	{
+		int puntaje = 0;
+		for(Carta carta : mano)
+		{
+			puntaje += carta.getValor();
+		}
+		return puntaje;
+	}
 
 	public String getNombre() {
 		return nombre;

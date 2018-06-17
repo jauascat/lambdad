@@ -16,7 +16,7 @@ public class Naipe {
 
 				try {
 					cartas.add(new Carta(nombre, palo, NombreCarta.getValor(nombre)));
-				} catch (ValorCartaInvalidoException e) {
+				} catch (ExceptionValorCartaInvalido e) {
 					e.printStackTrace();
 				}
 	}

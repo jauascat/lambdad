@@ -2,8 +2,6 @@ package com.capalogica;
 
 import java.util.ArrayList;
 
-import org.junit.Test;
-
 public class Mesa {
 
 	private Repartidor repartidor;
@@ -15,9 +13,9 @@ public class Mesa {
 		jugadores = new ArrayList<>();
 	}
 	
-	public void agregarJugador(Jugador jugadorNuevo) throws MesaLlenaException
+	public void agregarJugador(Jugador jugadorNuevo) throws ExceptionMesaLlena
 	{
-		if(jugadores.size() >= 4) throw new MesaLlenaException();
+		if(jugadores.size() >= 4) throw new ExceptionMesaLlena();
 		else
 			jugadores.add(jugadorNuevo);
 	}
@@ -34,6 +32,32 @@ public class Mesa {
 			for(Jugador jugador : jugadores)
 			
 				repartidor.darCarta(jugador);
+	}
+	
+	public ArrayList<Jugador> verificarGanadores21()
+	{
+		int mayorPuntaje = 0;
+		int puntaje;
+		ArrayList<Jugador> ganadores = new ArrayList<Jugador>();
+		
+		for(Jugador jugador : jugadores)
+		{
+			puntaje = jugador.verPuntaje21();
+			if(puntaje <= 21)
+			{
+				if(puntaje > mayorPuntaje)
+				{
+					ganadores.clear();
+					ganadores.add(jugador);
+					mayorPuntaje = puntaje;
+				}
+				if(puntaje == mayorPuntaje)
+				{
+					ganadores.add(jugador);
+				}
+			}
+		}
+		return ganadores;
 	}
 	
 	public Repartidor getRepartidor() {

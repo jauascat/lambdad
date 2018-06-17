@@ -12,12 +12,12 @@ import static org.junit.Assert.fail;
 import com.capalogica.Carta;
 import com.capalogica.NombreCarta;
 import com.capalogica.PaloCarta;
-import com.capalogica.ValorCartaInvalidoException;
+import com.capalogica.ExceptionValorCartaInvalido;
 
 public class CartaTest {
 
 	@Test
-	public void probarCarta() throws ValorCartaInvalidoException {
+	public void probarCarta() throws ExceptionValorCartaInvalido {
 		
 		Carta cartaPrueba;
 		
@@ -46,7 +46,7 @@ public class CartaTest {
 					new Carta(nombre, palo, 0); //aqui pone el valor cero
 					fail("No tira exception ValorCartaInvalidoException");
 					
-				} catch(ValorCartaInvalidoException ex) {
+				} catch(ExceptionValorCartaInvalido ex) {
 					assertThat(ex.getMessage(), containsString("carta invalido"));
 				}
 		
@@ -62,7 +62,7 @@ public class CartaTest {
 						new Carta(nombre, palo, valorPrueba);
 						fail("No lanza exception ValorCartaInvalidoException");
 						
-					} catch(ValorCartaInvalidoException ex) {
+					} catch(ExceptionValorCartaInvalido ex) {
 						assertThat(ex.getMessage(), containsString("carta invalido"));
 					}
 		
@@ -78,13 +78,13 @@ public class CartaTest {
 						new Carta(nombre, palo, valorPrueba);
 						fail("No tira exception ValorCartaInvalidoException");
 						
-					} catch(ValorCartaInvalidoException ex) {
+					} catch(ExceptionValorCartaInvalido ex) {
 						assertThat(ex.getMessage(), containsString("carta invalido"));
 					}
 	}
 	
 	@Test
-	public void probarEqualsIguales() throws ValorCartaInvalidoException
+	public void probarEqualsIguales() throws ExceptionValorCartaInvalido
 	{
 		Carta carta1;
 		Carta carta2;
@@ -120,7 +120,7 @@ public class CartaTest {
 	}
 	
 	@Test
-	public void probarEqualsDiferentesSencillo() throws ValorCartaInvalidoException
+	public void probarEqualsDiferentesSencillo() throws ExceptionValorCartaInvalido
 	{
 		Carta cartaUno;
 		Carta cartaDos;
