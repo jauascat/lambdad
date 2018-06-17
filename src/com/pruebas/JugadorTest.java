@@ -11,18 +11,19 @@ import com.capalogica.Jugador;
 
 public class JugadorTest {
 	
-	final String NOMBREPRUEBA = "";
+	
 
 	@Test
 	public void probarNombreExiste() {
-		Jugador jugador = new Jugador(NOMBREPRUEBA);
+		
+		Jugador jugador = new Jugador("");
 		assertEquals(String.class, jugador.getNombre().getClass());
 	}
 	
 	@Test
 	public void probarManoPuedeTenerNCartas() {
 		
-		Jugador jugador = new Jugador(NOMBREPRUEBA);
+		Jugador jugador = new Jugador("");
 		Class claseMano = jugador.getMano().getClass();
 		
 		if(!Collection.class.isAssignableFrom(claseMano) && !Map.class.isAssignableFrom(claseMano))

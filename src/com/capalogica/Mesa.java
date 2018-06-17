@@ -1,26 +1,30 @@
 package com.capalogica;
 
-import com.capalogica.Jugador;
-import com.capalogica.Repartidor;
+import java.util.ArrayList;
 
 public class Mesa {
 
 	private Repartidor repartidor;
-	private Jugador[] jugadores;
+	private ArrayList<Jugador> jugadores;
 	
 	public Mesa() {
 	
 		repartidor = new Repartidor();
-		jugadores = new Jugador[4];
-		
-		System.out.println(jugadores[0]);
+		jugadores = new ArrayList<>();
+	}
+	
+	public void agregarJugador(Jugador jugadorNuevo) throws MesaLlenaException
+	{
+		if(jugadores.size() >= 4) throw new MesaLlenaException();
+		else
+			jugadores.add(jugadorNuevo);
 	}
 	
 	public Repartidor getRepartidor() {
 		return repartidor;
 	}
 	
-	public Jugador[] getJugadores() {
+	public ArrayList<Jugador> getJugadores() {
 		return jugadores;
 	}
 }

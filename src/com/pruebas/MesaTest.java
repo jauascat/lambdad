@@ -1,11 +1,17 @@
 package com.pruebas;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
 
 import org.junit.Test;
 
 import com.capalogica.Jugador;
 import com.capalogica.Mesa;
+import com.capalogica.MesaLlenaException;
 import com.capalogica.Repartidor;
 
 public class MesaTest {
@@ -18,22 +24,35 @@ public class MesaTest {
 	}
 	
 	@Test
-	public void probarCapacidadJugadores()
-	{
-		Mesa mesa = new Mesa();
-		Jugador[] jugadoresActivo = mesa.getJugadores();
-		assertEquals(4, jugadoresActivo.length);
-	}
-	
-	@Test
 	public void probarMesaVaciaAlInicio()
 	{
 		Mesa mesa = new Mesa();
-		Jugador[] jugadoresActivo = mesa.getJugadores();
+		assertEquals(0, mesa.getJugadores().size());
+	}
+	
+	@Test
+	public void probarAgregarJugador()
+	{
+		Mesa mesa = new Mesa();
 		
-		for(int i=0; i < jugadoresActivo.length; i++)
+		for(byte i=0; i < 4; i++)
 		{
-			assertEquals(null, jugadoresActivo[i]);
+			try {
+				
+				mesa.agregarJugador(new Jugador(""));
+				
+			} catch(MesaLlenaException ex) {
+				fail("No acepta cantidad de jugadres legal");
+			}
+		}
+	
+		try {
+			
+			mesa.agregarJugador(new Jugador(""));
+			fail("No lanza error cuando se agrega cantidad ilegal de jugadores");
+			
+		} catch(MesaLlenaException ex) {
+			assertThat(ex.getMessage(), containsString("demasiados jugadores"));
 		}
 	}
 }

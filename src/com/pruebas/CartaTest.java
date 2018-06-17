@@ -60,7 +60,7 @@ public class CartaTest {
 					try {
 						
 						new Carta(nombre, palo, valorPrueba);
-						fail("No tira exception ValorCartaInvalidoException");
+						fail("No lanza exception ValorCartaInvalidoException");
 						
 					} catch(ValorCartaInvalidoException ex) {
 						assertThat(ex.getMessage(), containsString("carta invalido"));
