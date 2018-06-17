@@ -55,4 +55,28 @@ public class MesaTest {
 			assertThat(ex.getMessage(), containsString("demasiados jugadores"));
 		}
 	}
+
+	@Test
+	public void probarInicioDe21()
+	{
+		Mesa mesa = new Mesa();
+		
+		for(byte i = 0; i < 4; i++)
+		{
+			try {
+				
+				mesa.agregarJugador(new Jugador(""));
+				
+			} catch (MesaLlenaException e) {
+				e.printStackTrace();
+			}
+		}
+		mesa.EmpezarAJugar21();
+		
+		ArrayList<Jugador> jugadoresActivos = mesa.getJugadores();
+		for(Jugador jugador : jugadoresActivos)
+		{
+			assertEquals(2, jugador.getMano().size());
+		}
+	}
 }
