@@ -27,7 +27,7 @@ public class JugadorTest {
 		
 		if(!Collection.class.isAssignableFrom(claseMano) && !Map.class.isAssignableFrom(claseMano))
 		{
-			fail("Mano del jugador no es una colleccion");
+			fail("Mano del jugador no es una colección");
 		}
 	}
 }
