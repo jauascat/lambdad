@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import com.exepciones.MesaLlenaException;
 import com.mocks.MockMesa21yMedioTodos;
+import com.mocks.MockMesaRon;
 import com.mocks.MockMesa21CambioManoA;
 import com.mocks.MockMesa21CambioManoB;
 import com.mocks.MockMesa21Normal;
@@ -65,5 +66,30 @@ public class MesaTestInicio {
 		} catch(MesaLlenaException ex) {
 			assertThat(ex.getMessage(), containsString("demasiados jugadores"));
 		}
+	}
+	
+	@Test
+	public void probarReset21()
+	{
+		Mesa mesa = new MockMesa21Normal(4);
+		
+		mesa.reset();
+		
+		assertEquals(null, mesa.getDeck());
+		assertEquals(Repartidor.class, mesa.getRepartidor().getClass());
+		assertEquals(0, mesa.getJugadores().size());
+		
+	}
+	
+	@Test
+	public void probarResetRon()
+	{
+		Mesa mesa = new MockMesaRon(4);
+		
+		mesa.reset();
+		
+		assertEquals(null, mesa.getDeck());
+		assertEquals(Repartidor.class, mesa.getRepartidor().getClass());
+		assertEquals(0, mesa.getJugadores().size());
 	}
 }

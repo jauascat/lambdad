@@ -26,6 +26,13 @@ public class Mesa {
 		else
 			jugadores.add(jugadorNuevo);
 	}
+	
+	public void reset()
+	{
+		repartidor = new Repartidor();
+		jugadores = new ArrayList<>();
+		deck = null;
+	}
 
 	public void EmpezarAJugar21()
 	{
