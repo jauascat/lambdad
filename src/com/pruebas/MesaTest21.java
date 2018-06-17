@@ -25,6 +25,21 @@ import com.negocios.Repartidor;
 public class MesaTest21 {
 	
 	@Test
+	public void probarInicioDe21()
+	{
+		Mesa mesa = new MockMesa21Normal(4);
+		int capacidadJugadores = 4;
+		int cartasRepartidas = 2;
+		
+		ArrayList<Jugador> jugadoresActivos = mesa.getJugadores();
+		//revisa que todos los jugadores tengan 2 cartas
+		for(Jugador jugador : jugadoresActivos)
+		{
+			assertEquals(cartasRepartidas, jugador.getMano().size());
+		}
+	}
+	
+	@Test
 	public void probarGanadorDe21()
 	{
 		//juega 100 partidas de solo un turno

@@ -66,20 +66,4 @@ public class MesaTestInicio {
 			assertThat(ex.getMessage(), containsString("demasiados jugadores"));
 		}
 	}
-
-	@Test
-	public void probarInicioDe21()
-	{
-		Mesa mesa = new MockMesa21Normal(4);
-		int capacidadJugadores = 4;
-		int cartasRepartidas = 2;
-		
-		ArrayList<Jugador> jugadoresActivos = mesa.getJugadores();
-		//revisa que todos los jugadores tengan 2 cartas
-		for(Jugador jugador : jugadoresActivos)
-		{
-			assertEquals(cartasRepartidas, jugador.getMano().size());
-		}
-	}
-	
 }

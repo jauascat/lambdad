@@ -7,6 +7,7 @@ import org.junit.Test;
 import com.mocks.MockMesaRon;
 import com.negocios.Jugador;
 import com.negocios.Mesa;
+import com.negocios.Naipe;
 
 public class MesaTestRon {
 	
@@ -22,6 +23,27 @@ public class MesaTestRon {
 		for(Jugador jugador : jugadoresActivos)
 		{
 			assertEquals(cartasRepartidas, jugador.getMano().size());
+		}
+	}
+	
+	@Test
+	public void probarRepartidorDejaNaipe()
+	{
+		Mesa mesa = new MockMesaRon(4);
+		assertEquals(Naipe.class, mesa.getDeck().getClass());
+	}
+	
+	@Test
+	public void probarJugarTurnoRon()
+	{
+		Mesa mesa = new MockMesaRon(4);
+		ArrayList<Jugador> jugadores = mesa.getJugadores();
+		
+		mesa.jugarTurnoRon();
+		
+		for(Jugador jugador : jugadores)
+		{
+			assertEquals(8, jugador.getMano().size());
 		}
 	}
 }

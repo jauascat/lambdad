@@ -10,6 +10,7 @@ import com.exepciones.ValorCartaInvalidoException;
 
 public class Mesa {
 
+	private Naipe deck;
 	private Repartidor repartidor;
 	private ArrayList<Jugador> jugadores;
 	
@@ -30,12 +31,7 @@ public class Mesa {
 	{
 		repartidor.saltearCartas(jugadores, 2);
 	}
-	
-	public void empezarPartidaDeRon()
-	{
-		repartidor.saltearCartas(jugadores, 7);
-	}
-		
+
 	public ArrayList<Jugador> verificarGanadores21()
 	{
 		int mayorPuntaje = 0;
@@ -139,7 +135,7 @@ public class Mesa {
 					}
 					else
 					{
-						return contarPuntosOrdinariamente(mano, puntaje);
+						return contarPuntos21Ordinariamente(mano, puntaje);
 					}
 				}
 				else
@@ -150,20 +146,20 @@ public class Mesa {
 					}
 					else
 					{
-						return contarPuntosOrdinariamente(mano, puntaje);
+						return contarPuntos21Ordinariamente(mano, puntaje);
 					}
 				}
 			}
-			return contarPuntosOrdinariamente(mano, puntaje);
+			return contarPuntos21Ordinariamente(mano, puntaje);
 		}
 		else
 		{
-			return contarPuntosOrdinariamente(mano, puntaje);
+			return contarPuntos21Ordinariamente(mano, puntaje);
 		}
 		
 	}
 	
-	public int contarPuntosOrdinariamente(ArrayList<Carta> mano, int puntaje)
+	public int contarPuntos21Ordinariamente(ArrayList<Carta> mano, int puntaje)
 	{
 		System.out.println(mano.size());
 		for(Carta carta : mano)
@@ -173,6 +169,26 @@ public class Mesa {
 		return puntaje;
 	}
 	
+	
+	public void empezarPartidaDeRon()
+	{
+		repartidor.saltearCartas(jugadores, 7);
+		deck = repartidor.getNaipe();
+	}
+	
+	public void jugarTurnoRon()
+	{
+		for(Jugador jugador : jugadores)
+		{
+			tomarCartaDelDeck(jugador);
+		}
+	}
+	
+	public void tomarCartaDelDeck(Jugador jugador)
+	{
+		jugador.recibirCarta(deck.tomarCartaDelNaipe());
+	}
+		
 	public Repartidor getRepartidor() {
 		return repartidor;
 	}
@@ -180,4 +196,10 @@ public class Mesa {
 	public ArrayList<Jugador> getJugadores() {
 		return jugadores;
 	}
+	
+	public Naipe getDeck()
+	{
+		return deck;
+	}
+	
 }
