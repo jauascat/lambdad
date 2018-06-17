@@ -7,9 +7,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.capalogica.Carta;
-import com.capalogica.Naipe;
-import com.capalogica.PaloCarta;
+import com.enumeradores.PaloCarta;
+import com.negocios.Carta;
+import com.negocios.Naipe;
 
 public class NaipeTest {
 

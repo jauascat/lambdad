@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.capalogica.Jugador;
-import com.capalogica.Naipe;
-import com.capalogica.Repartidor;
+import com.negocios.Jugador;
+import com.negocios.Naipe;
+import com.negocios.Repartidor;
 
 public class RepartidorTest {
 

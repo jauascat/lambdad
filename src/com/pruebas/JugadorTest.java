@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.capalogica.Jugador;
+import com.negocios.Jugador;
 
 public class JugadorTest {
 

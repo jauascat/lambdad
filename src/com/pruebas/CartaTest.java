@@ -9,15 +9,15 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import com.capalogica.Carta;
-import com.capalogica.NombreCarta;
-import com.capalogica.PaloCarta;
-import com.capalogica.ExceptionValorCartaInvalido;
+import com.enumeradores.NombreCarta;
+import com.enumeradores.PaloCarta;
+import com.exepciones.ValorCartaInvalidoException;
+import com.negocios.Carta;
 
 public class CartaTest {
 
 	@Test
-	public void probarCarta() throws ExceptionValorCartaInvalido {
+	public void probarCarta() throws ValorCartaInvalidoException {
 		
 		Carta cartaPrueba;
 		
@@ -46,7 +46,7 @@ public class CartaTest {
 					new Carta(nombre, palo, 0); //aqui pone el valor cero
 					fail("No tira exception ValorCartaInvalidoException");
 					
-				} catch(ExceptionValorCartaInvalido ex) {
+				} catch(ValorCartaInvalidoException ex) {
 					assertThat(ex.getMessage(), containsString("carta invalido"));
 				}
 		
@@ -62,7 +62,7 @@ public class CartaTest {
 						new Carta(nombre, palo, valorPrueba);
 						fail("No lanza exception ValorCartaInvalidoException");
 						
-					} catch(ExceptionValorCartaInvalido ex) {
+					} catch(ValorCartaInvalidoException ex) {
 						assertThat(ex.getMessage(), containsString("carta invalido"));
 					}
 		
@@ -78,13 +78,13 @@ public class CartaTest {
 						new Carta(nombre, palo, valorPrueba);
 						fail("No tira exception ValorCartaInvalidoException");
 						
-					} catch(ExceptionValorCartaInvalido ex) {
+					} catch(ValorCartaInvalidoException ex) {
 						assertThat(ex.getMessage(), containsString("carta invalido"));
 					}
 	}
 	
 	@Test
-	public void probarEqualsIguales() throws ExceptionValorCartaInvalido
+	public void probarEqualsIguales() throws ValorCartaInvalidoException
 	{
 		Carta carta1;
 		Carta carta2;
@@ -120,7 +120,7 @@ public class CartaTest {
 	}
 	
 	@Test
-	public void probarEqualsDiferentesSencillo() throws ExceptionValorCartaInvalido
+	public void probarEqualsDiferentesSencillo() throws ValorCartaInvalidoException
 	{
 		Carta cartaUno;
 		Carta cartaDos;
