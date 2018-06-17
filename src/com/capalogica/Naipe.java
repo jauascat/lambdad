@@ -21,6 +21,14 @@ public class Naipe {
 				}
 	}
 	
+	public Carta tomarCartaDelNaipe()
+	{
+		Carta cartaTomada = cartas.get(0);
+		cartas.remove(0);
+		
+		return cartaTomada;
+	}
+	
 	public void barajarse()
 	{
 		Collections.shuffle(cartas);

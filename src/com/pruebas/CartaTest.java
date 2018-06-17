@@ -140,41 +140,4 @@ public class CartaTest {
 		
 		assertFalse(cartaUno.equals(cartaDos));
 	}
-	
-//	@Test
-//	public void probarEqualsDiferentes() throws ValorCartaInvalidoException
-//	{
-//		Carta carta1;
-//		Carta carta2;
-//
-//		for(int i = 0; i < 10000; i++)
-//		{
-//			PaloCarta palo1 = obtenerPaloAleatorio();
-//			PaloCarta palo2 = obtenerPaloAleatorio();
-//			
-//			NombreCarta nombre1 = obtenerNombreAleatorio();
-//			NombreCarta nombre2 = obtenerNombreAleatorio();
-//		
-//			if(palo1 != palo2 && nombre1 != nombre2)
-//			{
-//				carta1 = new Carta(nombre1, palo1, NombreCarta.getValor(nombre1));
-//				carta2 = new Carta(nombre2, palo2, NombreCarta.getValor(nombre2));
-//				assertFalse(carta1.equals(carta2));
-//			}
-//	 	}
-//	}
-//	
-//	public PaloCarta obtenerPaloAleatorio()
-//	{
-//		Random random = new Random();
-//		int paloSeleccionado = random.nextInt(PaloCarta.class.getEnumConstants().length);
-//		return PaloCarta.class.getEnumConstants()[paloSeleccionado];
-//	}
-//	
-//	public NombreCarta obtenerNombreAleatorio()
-//	{
-//		Random random = new Random();
-//		int nombreSeleccionado = random.nextInt(NombreCarta.class.getEnumConstants().length);
-//		return NombreCarta.class.getEnumConstants()[nombreSeleccionado];
-//	}
 }

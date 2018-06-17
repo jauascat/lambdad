@@ -11,6 +11,11 @@ public class Repartidor {
 		naipe.barajarse();
 	}
 	
+	public void darCarta(Jugador jugadorRecipiente)
+	{
+		jugadorRecipiente.recibirCarta(naipe.tomarCartaDelNaipe());
+	}
+	
 	public Naipe getNaipe()
 	{
 		return naipe;

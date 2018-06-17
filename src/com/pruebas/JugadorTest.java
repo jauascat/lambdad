@@ -10,14 +10,19 @@ import org.junit.Test;
 import com.capalogica.Jugador;
 
 public class JugadorTest {
-	
-	
 
 	@Test
 	public void probarNombreExiste() {
 		
 		Jugador jugador = new Jugador("");
 		assertEquals(String.class, jugador.getNombre().getClass());
+	}
+	
+	@Test
+	public void probarManoVaciaAlInicio()
+	{
+		Jugador jugador = new Jugador("");
+		assertEquals(0, jugador.getMano().size());
 	}
 	
 	@Test

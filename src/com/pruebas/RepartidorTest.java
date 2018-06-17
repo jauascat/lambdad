@@ -1,17 +1,33 @@
 package com.pruebas;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import org.junit.Test;
+
+import com.capalogica.Jugador;
 import com.capalogica.Naipe;
 import com.capalogica.Repartidor;
 
 public class RepartidorTest {
 
 	@Test
-	public void probarSiHayNaipe()
+	public void probarSiHayNaipeAlInicio()
 	{
 		Repartidor repartidor = new Repartidor();
 		assertEquals(Naipe.class, repartidor.getNaipe().getClass());
+	}
+	
+	@Test
+	public void probarRepartirCartaUnJugador()
+	{
+		Repartidor repartidor = new Repartidor();
+		Jugador jugadorRecipiente = new Jugador("");
+		
+		for(int i = 0; i < 52; i++)
+		{
+			repartidor.darCarta(jugadorRecipiente);
+			assertEquals(51 - i, repartidor.getNaipe().getCartas().size());
+			assertEquals( i + 1, jugadorRecipiente.getMano().size());
+		}
 	}
 }

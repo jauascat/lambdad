@@ -11,6 +11,11 @@ public class Jugador {
 		this.nombre = nombre;
 		mano = new ArrayList<>();
 	}
+	
+	public void recibirCarta(Carta cartaRecibida)
+	{
+		mano.add(cartaRecibida);
+	}
 
 	public String getNombre() {
 		return nombre;
