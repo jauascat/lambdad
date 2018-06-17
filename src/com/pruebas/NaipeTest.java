@@ -3,28 +3,25 @@ package com.pruebas;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import com.capalogica.Carta;
 import com.capalogica.Naipe;
-import com.capalogica.NombreCarta;
 import com.capalogica.PaloCarta;
-import com.capalogica.ValorCartaInvalidoException;
 
 public class NaipeTest {
 
 	@Test
-	public void probarCantidadCartas() throws ValorCartaInvalidoException {
+	public void probarCantidadCartas() {
 		
-		Naipe naipe = new Naipe();;
+		Naipe naipe = new Naipe();
 		assertEquals(52, naipe.getCartas().size());
 	}
 	
 	@Test
-	public void probarCuatroPalos() throws ValorCartaInvalidoException {
+	public void probarCuatroPalos() {
 		
 		Naipe naipe = new Naipe();
 		ArrayList<Carta> cartas = naipe.getCartas();
@@ -37,7 +34,7 @@ public class NaipeTest {
 	}
 	
 	@Test
-	public void probarUnaCartaPorNaipe() throws ValorCartaInvalidoException
+	public void probarUnaCartaPorNaipe()
 	{	
 		Naipe naipe = new Naipe();
 		ArrayList<Carta> cartas = naipe.getCartas();

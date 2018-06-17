@@ -1,12 +1,13 @@
 package com.capalogica;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Naipe {
 
 	private ArrayList<Carta> cartas;
 	
-	public Naipe() throws ValorCartaInvalidoException {
+	public Naipe() {
 		
 		cartas = new ArrayList<>();
 		
@@ -18,8 +19,11 @@ public class Naipe {
 				} catch (ValorCartaInvalidoException e) {
 					e.printStackTrace();
 				}
-		
-		
+	}
+	
+	public void barajarse()
+	{
+		Collections.shuffle(cartas);
 	}
 	
 	public ArrayList<Carta> getCartas()
