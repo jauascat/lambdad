@@ -2,6 +2,7 @@ package com.pruebas;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import com.capalogica.Carta;
+import com.capalogica.ExceptionMesaLlena;
 import com.capalogica.Jugador;
 import com.capalogica.Mesa;
-import com.capalogica.ExceptionMesaLlena;
 import com.capalogica.Repartidor;
 
 public class MesaTest {
@@ -63,69 +65,42 @@ public class MesaTest {
 	@Test
 	public void probarInicioDe21()
 	{
-		Mesa mesa = new Mesa();
+		Mesa mesa = new MockMesaNormal(4);
 		int capacidadJugadores = 4;
 		int cartasRepartidas = 2;
 		
-		for(byte i = 0; i < capacidadJugadores; i++)
-		{
-			try {
-				
-				mesa.agregarJugador(new Jugador(""));
-				
-			} catch (ExceptionMesaLlena e) {
-				e.printStackTrace();
-			}
-		}
-		mesa.EmpezarAJugar21();
-		
 		ArrayList<Jugador> jugadoresActivos = mesa.getJugadores();
+		//revisa que todos los jugadores tengan 2 cartas
 		for(Jugador jugador : jugadoresActivos)
 		{
 			assertEquals(cartasRepartidas, jugador.getMano().size());
 		}
-		
-		assertEquals(52-(cartasRepartidas * capacidadJugadores), mesa.getRepartidor().getNaipe().getCartas().size());
 	}
 	
 	@Test
 	public void probarGanadorDe21()
 	{
-		//juega 100 partidas de un turno
+		//juega 100 partidas de solo un turno
 		for(byte m = 0; m < 100; m++)
 		{
-			Mesa mesa = new Mesa();
-			ArrayList<Jugador> ganadores = new ArrayList<>();
-			int capacidadJugadores = 4;
-			int cartasRepartidas = 2;
-			ArrayList<Jugador> jugadoresActivos = mesa.getJugadores();
-			int puntajeMayor = 0;
-			int puntajeJugador = 0;
-			int puntajeComparador = 0;
+			Mesa mockMesa = new MockMesaNormal(4);
+			ArrayList<Jugador> ganadores;
+			ArrayList<Jugador> jugadoresActivos;
+			int puntajeMayor;
+			int puntajeJugador;
 
-			//prepara mesa
-			for(byte i = 0; i < capacidadJugadores; i++)
-			{
-				try {
-					
-					mesa.agregarJugador(new Jugador(""));
-					
-				} catch (ExceptionMesaLlena e) {
-					e.printStackTrace();
-				}
-			}
-			mesa.EmpezarAJugar21();
-			
-			//calcula ganadores con dos cartas
-			ganadores = mesa.verificarGanadores21();
+			//calcula ganadores con dos cartas (juego corto)
+			ganadores = mockMesa.verificarGanadores21();
 			
 			//verifica que siempre haya al menos un ganador
 			assertTrue(ganadores.size() > 0);
 			
 			//recalcula nota mas alta potencial
+			jugadoresActivos = mockMesa.getJugadores();
+			puntajeMayor = 0;
 			for(Jugador jugador : jugadoresActivos)
 			{
-				puntajeJugador = jugador.verPuntaje21();
+				puntajeJugador = mockMesa.calcularPuntaje21(jugador);
 				
 				if(puntajeJugador <= 21)
 					
@@ -135,9 +110,10 @@ public class MesaTest {
 			}
 			
 			//verifica que ningun ganador potencial haya sido superado por un jugador no escogido
+			ganadores = new ArrayList<>();
 			for(Jugador jugadorGanador : ganadores)
 			{
-				if(jugadorGanador.verPuntaje21() < puntajeMayor)
+				if(mockMesa.calcularPuntaje21(jugadorGanador) < puntajeMayor)
 				{
 					fail("no se encontro el ganador correcto");
 				}
@@ -146,15 +122,44 @@ public class MesaTest {
 			//verifica si el empate es valido
 			if(ganadores.size() > 1)
 			{
-				puntajeJugador = ganadores.get(0).verPuntaje21();
+				puntajeJugador = mockMesa.calcularPuntaje21(ganadores.get(0));
 				for(Jugador jugadorGanador : ganadores)
 				{
-					if(puntajeJugador != jugadorGanador.verPuntaje21())
+					if(puntajeJugador != mockMesa.calcularPuntaje21(jugadorGanador))
 					{
 						fail("Jugadores empatados tienen puntajes distintos");
 					}
 				}
 			}
+		}
+	}
+	
+	@Test
+	public void pruebaCambioManoCambianTodos()
+	{
+		Mesa mockMesa = new MockMesaCambioManoA();
+		ArrayList<Jugador> jugadores = mockMesa.getJugadores();
+		
+		for(Jugador jugador : jugadores)
+		{
+			assertTrue(mockMesa.verificarCambio(jugador));
+		}
+		
+		for(Jugador jugador : jugadores)
+		{
+			assertFalse(mockMesa.verificarCambio(jugador));
+		}
+	}
+	
+	@Test
+	public void pruebaCambioManoTodosCasiPeroNo()
+	{
+		Mesa mockMesa = new MockMesaCambioManoB();
+		ArrayList<Jugador> jugadores = mockMesa.getJugadores();
+		
+		for(Jugador jugador : jugadores)
+		{
+			assertFalse(mockMesa.verificarCambio(jugador));
 		}
 	}
 }

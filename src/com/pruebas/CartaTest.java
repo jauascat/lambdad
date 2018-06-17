@@ -26,9 +26,9 @@ public class CartaTest {
 			for(PaloCarta palo : PaloCarta.values())
 			{
 				cartaPrueba = new Carta(nombre, palo, NombreCarta.getValor(nombre));
-				assertEquals(nombre, cartaPrueba.getNombre());
-				assertEquals(  palo, cartaPrueba.getPalo());
-				assertEquals(NombreCarta.getValor(cartaPrueba.getNombre()), cartaPrueba.getValor());
+				assertEquals(nombre, cartaPrueba.getNombreCarta());
+				assertEquals(  palo, cartaPrueba.getPaloCarta());
+				assertEquals(NombreCarta.getValor(cartaPrueba.getNombreCarta()), cartaPrueba.getValor());
 			}
 		}
 	}

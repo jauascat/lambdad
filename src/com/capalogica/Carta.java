@@ -32,11 +32,11 @@ public class Carta {
 			return false;
 	}
 
-	public NombreCarta getNombre() {
+	public NombreCarta getNombreCarta() {
 		return nombre;
 	}
 
-	public PaloCarta getPalo() {
+	public PaloCarta getPaloCarta() {
 		return palo;
 	}
 

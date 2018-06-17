@@ -28,12 +28,7 @@ public class Naipe {
 		
 		return cartaTomada;
 	}
-	
-	public void barajarse()
-	{
-		Collections.shuffle(cartas);
-	}
-	
+
 	public ArrayList<Carta> getCartas()
 	{
 		return cartas;

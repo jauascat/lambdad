@@ -28,7 +28,7 @@ public class NaipeTest {
 		
 		for(byte i = 0; i < cartas.size(); i++)
 		{
-			PaloCarta palo = cartas.get(i).getPalo();
+			PaloCarta palo = cartas.get(i).getPaloCarta();
 			assertEquals(PaloCarta.class, palo.getClass());
 		}
 	}
@@ -44,7 +44,8 @@ public class NaipeTest {
 		{			
 			for(Carta cartaComparada : bufferCartas)
 			{
-				if(carta.getNombre() == cartaComparada.getNombre() && carta.getPalo() == cartaComparada.getPalo())
+				if(carta.getNombreCarta() == cartaComparada.getNombreCarta() && 
+						carta.getPaloCarta() == cartaComparada.getPaloCarta())
 					
 					fail("Mas de un tipo de carta en el naipe");
 				
