@@ -16,6 +16,12 @@ public class Jugador {
 	{
 		mano.add(cartaRecibida);
 	}
+	
+	public void seDeshaceDeCarta()
+	{
+		int indiceCartaDesechar = (int) Math.random() * mano.size();
+		mano.remove(indiceCartaDesechar);
+	}
 
 	public String getNombre() {
 		return nombre;

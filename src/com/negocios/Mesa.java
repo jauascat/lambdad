@@ -180,6 +180,7 @@ public class Mesa {
 	{
 		for(Jugador jugador : jugadores)
 		{
+			jugador.seDeshaceDeCarta();
 			tomarCartaDelDeck(jugador);
 		}
 	}

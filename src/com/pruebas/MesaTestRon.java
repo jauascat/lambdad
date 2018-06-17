@@ -43,7 +43,7 @@ public class MesaTestRon {
 		
 		for(Jugador jugador : jugadores)
 		{
-			assertEquals(8, jugador.getMano().size());
+			assertEquals(7, jugador.getMano().size());
 		}
 	}
 }
