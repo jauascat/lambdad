@@ -1,10 +1,7 @@
 package com.pruebas;
 
-import static org.hamcrest.CoreMatchers.containsString;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -12,17 +9,16 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.exepciones.MesaLlenaException;
 import com.mocks.MockMesa21yMedioTodos;
 import com.mocks.MockMesa21CambioManoA;
 import com.mocks.MockMesa21CambioManoB;
+import com.mocks.MockMesa21GananComodinCasiTodos;
+import com.mocks.MockMesa21GananComodinTodos;
 import com.mocks.MockMesa21Normal;
 import com.mocks.MockMesa21yMedioCasiTodos;
-import com.negocios.Carta;
 import com.negocios.Jugador;
 import com.negocios.Manos;
 import com.negocios.Mesa;
-import com.negocios.Repartidor;
 
 public class MesaTest21 {
 	
@@ -144,6 +140,30 @@ public class MesaTest21 {
 		for(Jugador jugador : jugadores)
 		{
 			assertFalse(Manos.is21yMedio(jugador.getMano()));
+		}
+	}
+	
+	@Test
+	public void probarGananComodinTodos()
+	{
+		Mesa mockMesa = new MockMesa21GananComodinTodos();
+		ArrayList<Jugador> jugadores = mockMesa.getJugadores();
+		
+		for(Jugador jugador : jugadores)
+		{
+			assertTrue(Manos.isComodin21(jugador.getMano()));
+		}
+	}
+	
+	@Test
+	public void probarGananComodinCasiTodosPeroNo()
+	{
+		Mesa mockMesa = new MockMesa21GananComodinCasiTodos();
+		ArrayList<Jugador> jugadores = mockMesa.getJugadores();
+		
+		for(Jugador jugador : jugadores)
+		{
+			assertFalse(Manos.isComodin21(jugador.getMano()));
 		}
 	}
 }

@@ -89,8 +89,12 @@ public class Mesa {
 		{
 			if(Manos.is21yMedio(mano))	return 21;
 			else
-			
-				return Manos.contarPuntos21Normal(mano);
+			{
+				if(Manos.isComodin21(mano)) return 21;
+				else
+					
+					return Manos.contarPuntos21Normal(mano);
+			}
 		}
 		else
 		

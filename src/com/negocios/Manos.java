@@ -35,7 +35,7 @@ public class Manos {
 		ArrayList<NombreCarta> referentesComparacion = new ArrayList<>();
 		
 		referentesComparacion.add(NombreCarta.SIETE);
-		referentesComparacion.add(NombreCarta.SIETE);
+		referentesComparacion.add(NombreCarta.NUEVE);
 		
 		return isIguales(mano, referentesComparacion);
 	}
@@ -73,7 +73,7 @@ public class Manos {
 		if(mano.size() != referentesComparacion.size()) return false;
 		else
 		{
-			//recorre la (clon)mano del jugador con recorrido nombreIterador anidado
+			//recorre la (clon)mano del jugador con recorrido de referentes anidado
 			ListIterator<NombreCarta> nombreIterador = null;
 			ListIterator<Carta> manoIterador = clonMano.listIterator();
 			while(manoIterador.hasNext())
